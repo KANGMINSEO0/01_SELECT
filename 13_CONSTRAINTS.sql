@@ -158,11 +158,18 @@ VALUES (1, 'user01', 'pass01', '홍길동', '남', '010-1234-5678', 'hong123@gma
 SELECT * FROM USER_FOREIGNKEY2;
 
 -- 1) 부모테이블의 grade_code 수정
-DROP TABLE IF EXISTS user_foreignkey1;
+DROP TABLE IF EXISTS user_foreignkey2;
 
 UPDATE user_grade
-SET grade_code = null
+SET grade_code = 1		-- 부모 생성시 NOT NULL을 넣어놔서 NULL을 넣을 순 없다. 대신 다른 문자를 넣으면 NULL로 바뀜
 WHERE grade_code = 10;
+
+SELECT * FROM USER_FOREIGNKEY2;
+
+DELETE FROM USER_GRADE
+WHERE GRADE_CODE = 20;
+
+SELECT * FROM USER_FOREIGNKEY2;
 
 /*
 DROP TABLE IF EXISTS user_grade2;
